@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <h2>Upload a Video</h2>
+    <form>
+        <div class="mb-3">
+            <label for="videoFile" class="form-label">Choose a Video File:</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event)" id="videoFile" accept="video/*">
+        </div>
+        <button class="btn btn-primary" (click)="uploadVideo()">Upload</button>
+    </form>
+
+    <h2 class="mt-4">Video List</h2>
+    <ul class="list-group mt-2">
+        <li class="list-group-item" *ngFor="let video of videos">
+            {{ video.name }}
+            <a [href]="'http://localhost:9000/download/' + video._id" download class="btn btn-success btn-sm ms-2">Download</a>
+            <button (click)="setSelectedVideoUrl('http://localhost:9000/download/' + video._id)" class="btn btn-primary btn-sm ms-2">View</button>
+        </li>
+    </ul>
+
+    <div *ngIf="selectedVideoUrl" class="mt-4">
+        <h2>Selected Video</h2>
+        <video controls width="400" height="300" class="mt-2">
+            <source [src]="selectedVideoUrl" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>

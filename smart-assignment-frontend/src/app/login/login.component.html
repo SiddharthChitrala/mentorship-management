@@ -1,0 +1,61 @@
+<section id="section1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10" *ngIf="isLoginVisible; else signupSection" id="col1">
+                <p class="fs-3 fw-bold" style="margin: 5vh 2vh 5vh 5vh;">Login to system</p>
+                <p class="fs-5" style="margin: 5vh 5vh 1vh 5vh;">Please enter your login information or
+                    <span (click)="toggleForm()">{{ isLoginVisible ? 'click here' : 'click here' }}</span>
+                    to register
+                </p>
+
+                <form (ngSubmit)="login()">
+                    <div class="form-floating mb-3 " style="margin: 4vh 35vh 5vh 5vh;">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="email" [(ngModel)]="email" name="email">
+                        <label for="floatingInput">Email</label>
+                    </div>
+                    <div class="form-floating mb-3" style="margin: 3vh 35vh 5vh 5vh;">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="password" name="password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="button" style="margin: 5vh 35vh 5vh 5vh;">
+                        <button type="submit" id="btn">Log in</button>
+                    </div>
+                </form>
+            </div>
+            <ng-template #signupSection>
+                <div class="col-lg-10" id="col2">
+                    <p class="fs-3 fw-bold" style="margin: 1vh 2vh 3vh 49vh;">Register to system</p>
+                    <p class="fs-5" style="margin: 1vh 2vh 1vh 21vh;">Please
+                        <span (click)="toggleForm()">{{ isLoginVisible ? 'click here' : 'click here' }}</span>
+                        to login if you have an account
+                    </p>
+                    <form (ngSubmit)="register()">
+                        <div class="form-floating mb-2" style="margin: 1vh 5vh 5vh 35vh;">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="Email address" [(ngModel)]="email"name="email" >
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-2 " style="margin: 1vh 5vh 5vh 35vh;">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="Username" [(ngModel)]="username" name="username">
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating mb-2" style="margin: 1vh 5vh 5vh 35vh;">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="password" name="password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="form-floating" style="margin: 1vh 5vh 5vh 35vh;">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" [(ngModel)]="role" name="role">
+                                <option value="0" >Student</option>
+                                <option value="1" >Mentor</option>
+                                <option value="2"  >Admin</option>
+                            </select>
+                            <label for="floatingSelect">Role</label>
+                        </div>
+                        <div class="button" style="margin: 1vh 5vh 5vh 35vh;">
+                            <button type="submit" id="btn">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</section>

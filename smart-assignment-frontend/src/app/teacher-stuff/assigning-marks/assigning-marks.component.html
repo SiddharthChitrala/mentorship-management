@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="text-center">
+        <p class="fs-2">Student Details</p>
+    </div>
+
+    <div class="input-group mb-4">
+        <input class="form-control" id="inputGroupSelect04" placeholder="Student Name" [(ngModel)]="searchTerm">
+        <button class="btn btn-primary" type="button" (click)="searchAttendance()">Search</button>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let student of filteredDetails">
+            <div class="card h-100">
+                <div class="card-header">
+                    {{ student.fullName }}
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">{{ student.email }}</h6>
+                    <a class="card-text" [href]="student.gitLink" target="_blank">GitHub Link</a> <br>
+                    <a class="card-text" [href]="student.videoLink" target="_blank">Video Link</a>
+                    <h6 class="card-text">Marks: {{ student.marks }}</h6>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="assignMarks(student._id)">Assign Marks</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-danger btn-block" (click)="deleteStudent(student._id)">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Assign Marks</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="marks">Marks</label>
+                    <input type="number" class="form-control" name="marks" id="marks" [(ngModel)]="marks">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="saveMarks()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

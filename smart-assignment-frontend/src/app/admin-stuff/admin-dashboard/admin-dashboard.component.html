@@ -1,0 +1,45 @@
+<nav class="navbar navbar-light bg-transparent">
+    <div class="container-fluid">
+        <!-- <p class="navbar-brand">Check Menu</p> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+            aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="offcanvasDarkNavbar"
+            aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active " href="/admin" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateTo('Login_Data')">Login Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" (click)="navigateTo('Chat_App')">Chat_App</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Centered Image -->
+<div class="col-md-9">
+    <!-- Use the router-outlet to display the routed content -->
+    <ng-container *ngIf="activeComponent; else showImage">
+        <!-- Display the active component -->
+        <ng-container *ngComponentOutlet="activeComponent"></ng-container>
+    </ng-container>
+
+    <ng-template #showImage>
+        <!-- Display the image -->
+        <img src="https://img.freepik.com/free-vector/welcome-word-flat-cartoon-people-characters_81522-4207.jpg?w=900&t=st=1694027621~exp=1694028221~hmac=ec6d2dd2ccaa51751421c0daef371a295ea55928c9f3523811a9d0293157419a"
+            alt="" class=" img1">
+    </ng-template>
+</div>
