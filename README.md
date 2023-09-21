@@ -48,4 +48,48 @@ The backend of the application handles data storage, retrieval, and overall appl
 
 To run the application:
 
-1. Clone this repository:
+1. Clone this repository: https://github.com/SiddharthChitrala/mentorship-management.git
+
+2. Install dependencies for both the frontend and backend:
+
+   ```bash
+   cd mentorship-management/smart-assignment-frontend
+   npm install
+   cd ../smart-assignment-backend
+   npm install
+   ```
+
+3. Start the backend server:
+
+   ```bash
+   node index.js
+   ```
+
+4. Start the frontend development server:
+
+   ```bash
+   cd ../smart-assignment-frontend
+   ng serve
+   ```
+
+5. Access the application at `http://localhost:4200/` in your web browser.
+
+## Application Explanation
+
+Mentorship Management offers the following key features:
+
+- **Administrator Dashboard**: Administrators can access a dashboard to manage various aspects of the system, including user data.
+
+- **Real-time Chat**: Students and teachers/mentors can communicate in real time through the chat feature.
+
+- **Assignment Submission**: Students can submit assignments and forms through the submission form.
+
+- **Resource Sharing**: Teachers/mentors can upload videos for students to access.
+
+- **Assignment Grading**: Teachers/mentors can assign marks to assignments submitted by students.
+
+## Conclusion
+
+Mentorship Management is a powerful MEAN stack application designed to enhance mentorship experiences. Customize it to your needs and enjoy streamlined mentorship management!
+
+For further assistance, refer to the project documentation or contact our support team. Happy mentoring!
