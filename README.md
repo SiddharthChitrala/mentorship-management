@@ -1,6 +1,6 @@
 # Mentorship Management MEAN Stack Project
 
-Welcome to the Mentorship Management project! This web application facilitates mentorship relationships between teachers/mentors and students, providing a platform for communication, assignment submission, and resource sharing.
+Welcome to Mentorship Management, where mentorship experiences are enhanced through technology. Our MEAN stack application facilitates teacher/mentor-student relationships by offering tools for seamless communication, assignment management, resource access, and an interactive chat system. Elevate your mentorship journey with this app.
 
 ## Table of Contents
 
@@ -90,6 +90,4 @@ Mentorship Management offers the following key features:
 
 ## Conclusion
 
-Mentorship Management is a powerful MEAN stack application designed to enhance mentorship experiences. Customize it to your needs and enjoy streamlined mentorship management!
-
-For further assistance, refer to the project documentation or contact our support team. Happy mentoring!
+Mentorship Management is a powerful MEAN stack application designed to enhance mentorship experiences.
