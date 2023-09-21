@@ -98,7 +98,7 @@ git clone https://github.com/SiddharthChitrala/mentorship-management.git
 cd mentorship-management
 
 
-### Install Dependencies
+## Install Dependencies
 Install dependencies for both the frontend and backend:
 
 # Install frontend dependencies
