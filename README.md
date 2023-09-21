@@ -94,5 +94,17 @@ To set up and run this project locally, follow these steps:
 Clone this repository to your local machine:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/SiddharthChitrala/mentorship-management.git
 cd mentorship-management
+
+
+### Install Dependencies
+Install dependencies for both the frontend and backend:
+
+# Install frontend dependencies
+cd smart-assignment-frontend
+npm install
+
+# Install backend dependencies
+cd ../smart-assignment-backend
+npm install
