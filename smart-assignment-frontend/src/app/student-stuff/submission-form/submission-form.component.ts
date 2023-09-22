@@ -15,6 +15,10 @@ export class SubmissionFormComponent {
 
   constructor(private http: HttpClient) { }
 
+  goBack() {
+    location.reload();
+  }
+  
   onSubmit() {
     const formData = {
       fullName: this.fullName,

@@ -20,6 +20,11 @@ export class ViewLoginDataComponent {
     });
   }
 
+  
+  goBack() {
+    location.reload();
+  }
+  
   getRoleLabel(roleValue: number): string {
     switch (roleValue) {
       case 0:

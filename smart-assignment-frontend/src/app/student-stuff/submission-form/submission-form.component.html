@@ -1,4 +1,6 @@
 <div class="container">
+    <button class="btn btn-secondary mb-3" (click)="goBack()">Back</button>
+
     <form (ngSubmit)="onSubmit()">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="fullName" placeholder="John Doe" [(ngModel)]="fullName" name="fullName" required>

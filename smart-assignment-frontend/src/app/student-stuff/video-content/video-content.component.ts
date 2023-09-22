@@ -11,6 +11,11 @@ export class VideoContentComponent implements OnInit { // Implement OnInit
 
   constructor(private http: HttpClient) {}
 
+  
+  goBack() {
+    location.reload();
+  }
+  
   ngOnInit(): void {
     this.getVideos();
   }

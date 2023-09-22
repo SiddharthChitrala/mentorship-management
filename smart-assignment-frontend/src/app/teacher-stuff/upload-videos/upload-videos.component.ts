@@ -39,6 +39,10 @@ export class UploadVideosComponent {
     );
   }
 
+  goBack() {
+    location.reload();
+  }
+  
   getVideos() {
     this.http.get('http://localhost:9000/videos').subscribe((data: any) => {
       this.videos = data;

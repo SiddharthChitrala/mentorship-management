@@ -53,4 +53,8 @@ export class AssigningMarksComponent {
         });
     }
   }
+  
+  goBack() {
+    location.reload();
+  }
 }

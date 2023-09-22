@@ -6,8 +6,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const fs = require('fs');
 const Pusher = require('pusher');
+// this is for Auth and Submiting files routes 
 var routes = require('./routes/routes');
+// this is for the messages models to save in db
 const Message = require('./models/message');
+// this is for the videos models to save in db
 const Video = require('./models/video'); 
 
 
@@ -24,11 +27,14 @@ const upload = multer({ storage });
 
 app.use('/uploads', express.static('uploads')); 
 
+// Pusher is a platform that i have used to creat chat feature
+// https://pusher.com/tutorials/
+
 const pusher = new Pusher({
-  appId: "1673480",
-  key: "9a5470d17ebacab25ff0",
-  secret: "8ea825fedc4659524394",
-  cluster: "ap2",
+  appId: "1673480",    // use your crediantials
+  key: "9a5470d17ebacab25ff0",  // replace with your key
+  secret: "8ea825fedc4659524394",  // replace with your key
+  cluster: "ap2",  
   useTLS: true
 });
 
@@ -50,24 +56,25 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-
+//uploading the videoos for the students
 
 app.post('/upload', upload.single('video'), (req, res) => {
-  console.log('Received upload request'); // Add this line
+  console.log('Received upload request'); 
   const { originalname, path } = req.file;
-  console.log('Original Name:', originalname); // Add this line
-  console.log('File Path:', path); // Add this line
+  console.log('Original Name:', originalname); 
+  console.log('File Path:', path); 
 
   const video = new Video({ name: originalname, path });
   video.save().then(() => {
-    console.log('Video saved successfully'); // Add this line
+    console.log('Video saved successfully'); 
     res.json({ message: 'Video uploaded successfully' });
   }).catch((error) => {
-    console.error('Error saving video:', error); // Add this line
+    console.error('Error saving video:', error); 
     res.status(500).json({ error: 'Error saving video' });
   });
 });
 
+//uploading the videoos for the students
 
 app.get('/videos', (req, res) => {
   Video.find({}) 
@@ -81,6 +88,7 @@ app.get('/videos', (req, res) => {
     });
 });
 
+//Downloading the videoos for the students
 app.get('/download/:id', (req, res) => {
   const videoId = req.params.id;
 
@@ -104,6 +112,9 @@ app.get('/download/:id', (req, res) => {
     });
 });
 
+
+
+// Saving the messages and posting messages
 
 app.post('/msg', async (req, res) => {
   try {
@@ -130,6 +141,8 @@ app.post('/msg', async (req, res) => {
   }
 });
 
+// get the messages form db and show the messages with username
+
 app.get('/messages', async (req, res) => {
   try {
     const messages = await Message.find().sort({ _id: -1 }).limit(10); 
@@ -142,7 +155,7 @@ app.get('/messages', async (req, res) => {
 });
 
 
-
+//connected to port 9000
 
 app.listen(9000, function (error) {
   if (error) {
