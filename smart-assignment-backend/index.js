@@ -113,6 +113,40 @@ app.get('/download/:id', (req, res) => {
 });
 
 
+app.delete('/videos/:id', (req, res) => {
+  const videoId = req.params.id;
+
+  Video.findById(videoId)
+    .then((video) => {
+      if (!video) {
+        return res.status(404).json({ error: 'Video not found' });
+      }
+
+      const filePath = path.join(__dirname, 'uploads', video.name);
+
+      // Remove the video from the filesystem
+      fs.unlink(filePath, (err) => {
+        if (err) {
+          console.error('Error deleting video:', err);
+          return res.status(500).json({ error: 'Error deleting video' });
+        }
+
+        // Remove the video from the database
+        Video.findByIdAndRemove(videoId)
+          .then(() => {
+            res.json({ message: 'Video deleted successfully' });
+          })
+          .catch((dbError) => {
+            console.error('Error deleting video from database:', dbError);
+            res.status(500).json({ error: 'Error deleting video from database' });
+          });
+      });
+    })
+    .catch((err) => {
+      console.error('Error finding video:', err);
+      res.status(500).json({ error: 'Error finding video' });
+    });
+});
 
 // Saving the messages and posting messages
 

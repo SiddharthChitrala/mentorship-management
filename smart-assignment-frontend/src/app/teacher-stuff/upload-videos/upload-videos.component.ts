@@ -11,7 +11,7 @@ export class UploadVideosComponent {
   videos: any[] = [];
   selectedVideoUrl: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getVideos();
@@ -42,7 +42,7 @@ export class UploadVideosComponent {
   goBack() {
     location.reload();
   }
-  
+
   getVideos() {
     this.http.get('http://localhost:9000/videos').subscribe((data: any) => {
       this.videos = data;
@@ -52,5 +52,20 @@ export class UploadVideosComponent {
   setSelectedVideoUrl(videoUrl: string) {
     this.selectedVideoUrl = videoUrl;
   }
-  
+  deleteVideoUrl(videoId: string) {
+    if (!confirm('Are you sure you want to delete this video?')) {
+      return; // If user cancels the delete action
+    }
+
+    this.http.delete(`http://localhost:9000/videos/${videoId}`).subscribe(
+      () => {
+        console.log('Video deleted successfully');
+        this.getVideos(); // Refresh the video list after deletion
+      },
+      (error) => {
+        console.error('Error deleting video', error);
+      }
+    );
+  }
+
 }

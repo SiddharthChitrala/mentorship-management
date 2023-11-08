@@ -15,6 +15,7 @@
             {{ video.name }}
             <a [href]="'http://localhost:9000/download/' + video._id" download class="btn btn-success btn-sm ms-2">Download</a>
             <button (click)="setSelectedVideoUrl('http://localhost:9000/download/' + video._id)" class="btn btn-primary btn-sm ms-2">View</button>
+            <button (click)="deleteVideoUrl(video._id)" class="btn btn-danger btn-sm ms-2">Delete</button>
         </li>
     </ul>
 
