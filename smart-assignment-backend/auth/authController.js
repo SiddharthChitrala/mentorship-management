@@ -15,17 +15,16 @@ const loginAuthControllerFn = async (req, res) => {
         }
 
         let roleMessage = '';
-
         // Check the user's role
         if (user.role === 0) {
             roleMessage = 'Student';
-            // Add your logic for student here
+            // Added logic for student here
         } else if (user.role === 1) {
             roleMessage = 'Teacher';
-            // Add your logic for teacher here
+            // Added logic for teacher here
         } else if (user.role === 2) {
             roleMessage = 'Admin';
-            // Add your logic for admin here
+            // Added logic for admin here
         } else {
             // Handle other roles or invalid roles here
         }
